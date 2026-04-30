@@ -18,9 +18,10 @@ import { saveCredentials, loadCredentials, clearCredentials, API_BASE } from '..
 
 export async function loginCommand() {
   const server = http.createServer()
-  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve))
+  // await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve))
+  await new Promise((resolve) => server.listen(0, 'https://backend-com.up.railway.app', resolve))
   const { port } = server.address()
-  
+  console.log(p)
   const spinner = ora('Waiting for GitHub authentication…').start()
   
   const authComplete = new Promise((resolve, reject) => {
@@ -29,7 +30,7 @@ export async function loginCommand() {
     }, 2 * 60 * 1000)
 
     server.on('request', (req, res) => {
-      const url = new URL(req.url, `http://localhost:${port}`)
+      const url = new URL(req.url, `https://backend-com.up.railway.app`)
       if (url.pathname !== '/callback') { res.end(); return }
 
       clearTimeout(timeout)

@@ -8,7 +8,7 @@ console.log(homedir())
 const CREDS_DIR = join(homedir(), '.insighta')
 const CREDS_FILE = join(CREDS_DIR, 'credentials.json')
 
-export const API_BASE = process.env.INSIGHTA_API_URL || 'http://localhost:4000'
+export const API_BASE = process.env.INSIGHTA_API_URL
 
 // ── Credentials storage ───────────────────────────────────────────────────────
 
